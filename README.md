@@ -36,6 +36,8 @@ $ python main.py'
 use bloomRPC for sending request and getting response on port 50051
 127.0.0.1:50051
 ```
+## New Features will add soon as a service
+
 ## Contributing
 Pull requests are welcome.
 
