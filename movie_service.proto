@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service TopMovies{
+    rpc GetTop250Movies(MovieRequest) returns (MovieArray) {}
+}
+
+message MovieRequest{
+    string api_key = 1;
+}
+
+message Movie{
+    string id = 1;
+    string rank = 2;
+    string title = 3;
+    string fullTitle = 4;
+    string year = 5;
+    string image = 6;
+    string crew = 7;
+    string imDbRating = 8;
+    string imDbRatingCount = 9;
+}
+
+message MovieArray{
+    repeated Movie movies = 1;
+}
