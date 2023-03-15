@@ -1,6 +1,6 @@
 # gRPC Service
 
-using gRPC in Python 
+using gRPC in Python
 
 ## Application
 __Whenever client send a request, server will process it and send JSON object as response back to the client__<br  />
@@ -36,6 +36,11 @@ $ python main.py'
 use bloomRPC for sending request and getting response on port 50051
 127.0.0.1:50051
 ```
+
+### Sample response in BloomRPC
+<div align="center" >
+<img loading="lazy" style="width:700px" src="./images/Top250Series.png">
+
 ## New Features will add soon as a service
 
 ## Contributing
