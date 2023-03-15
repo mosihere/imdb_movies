@@ -3,9 +3,13 @@
 using gRPC in Python
 
 ## Application
-__Whenever client send a request, server will process it and send JSON object as response back to the client__<br  />
 
-**Response is --> Top 250 Movies of IMDB**
+Whenever client send a request, server will process it and send JSON object as response back to the client<br/>
+
+**Responses could be:**
+1. Top 250 Movies of IMDB
+2. Top 250 Series of IMDB
+3. and ...
 
 ## Clone Project
 
@@ -40,6 +44,7 @@ use bloomRPC for sending request and getting response on port 50051
 ### Sample response in BloomRPC
 <div align="center" >
 <img loading="lazy" style="width:700px" src="./images/Top250Series.png">
+</div>
 
 ## New Features will add soon as a service
 
