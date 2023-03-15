@@ -9,7 +9,7 @@ def _get(url, api_key):
     response.raise_for_status()
     return response.json()
  
-def get_top_250_movies(api_key: str) -> list(dict):
+def get_top_250_movies(api_key: str):
 
     '''
     This function takes a single argument as api_key
@@ -38,8 +38,8 @@ def get_top_250_movies(api_key: str) -> list(dict):
 
     return data
 
-def get_top_250_series(api_key: str) -> list(dict):
-    
+def get_top_250_series(api_key: str):
+
     '''
     This function takes a single argument as api_key
     and returns a list of dicts --> top 250 series
@@ -51,7 +51,7 @@ def get_top_250_series(api_key: str) -> list(dict):
     '''
 
     data = []
-    for series in _get(TOP_250_SERIES_URL, api_key):
+    for series in _get(TOP_250_SERIES_URL, api_key)['items']:
         series_info = {
             'id' : series.get('id'),
             'rank': series.get('rank'),
