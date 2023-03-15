@@ -7,7 +7,17 @@ def _get(url, api_key):
     response.raise_for_status()
     return response.json()
  
-def get_top_250_movies(api_key):
+def get_top_250_movies(api_key: str) -> list(dict):
+    '''
+    This function takes a single argument as api_key
+    and returns a list of dicts --> top 250 movies
+
+    Args:
+        api_key: str
+        
+    Returns: list(dict)
+    '''
+
     data = []
     for movie in _get(URL, api_key)['items']:
         movie_info = {
