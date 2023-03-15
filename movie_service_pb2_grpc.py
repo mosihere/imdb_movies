@@ -19,12 +19,23 @@ class TopMoviesStub(object):
                 request_serializer=movie__service__pb2.MovieRequest.SerializeToString,
                 response_deserializer=movie__service__pb2.MovieArray.FromString,
                 )
+        self.GetTop250Series = channel.unary_unary(
+                '/TopMovies/GetTop250Series',
+                request_serializer=movie__service__pb2.SeriesRequest.SerializeToString,
+                response_deserializer=movie__service__pb2.SerriesArray.FromString,
+                )
 
 
 class TopMoviesServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetTop250Movies(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetTop250Series(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_TopMoviesServicer_to_server(servicer, server):
                     servicer.GetTop250Movies,
                     request_deserializer=movie__service__pb2.MovieRequest.FromString,
                     response_serializer=movie__service__pb2.MovieArray.SerializeToString,
+            ),
+            'GetTop250Series': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTop250Series,
+                    request_deserializer=movie__service__pb2.SeriesRequest.FromString,
+                    response_serializer=movie__service__pb2.SerriesArray.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class TopMovies(object):
         return grpc.experimental.unary_unary(request, target, '/TopMovies/GetTop250Movies',
             movie__service__pb2.MovieRequest.SerializeToString,
             movie__service__pb2.MovieArray.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetTop250Series(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/TopMovies/GetTop250Series',
+            movie__service__pb2.SeriesRequest.SerializeToString,
+            movie__service__pb2.SerriesArray.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
