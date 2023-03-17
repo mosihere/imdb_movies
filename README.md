@@ -42,7 +42,9 @@ use bloomRPC for sending request and getting response on port 50051
 ```
 
 ## Build Protocol buffer file:
+```
 $ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. movie_service.proto
+```
 
 ### Sample response in BloomRPC
 <div align="center" >
