@@ -1,24 +1,25 @@
 import requests
+from typing import List, Dict
+
 
 TOP_250_MOVIES_URL = "https://imdb-api.com/en/API/Top250Movies/"
 TOP_250_SERIES_URL = "https://imdb-api.com/en/API/Top250TVs/"
+SEARCH_MOVIE_URL = "https://imdb-api.com/en/API/SearchMovie/"
 
-
-def _get(url, api_key):
-    response = requests.get(f'{url}{api_key}')
+def _get(url, api_key, expression = ''):
+    response = requests.get(f'{url}{api_key}/{expression}')
     response.raise_for_status()
     return response.json()
  
-def get_top_250_movies(api_key: str):
-
+def get_top_250_movies(api_key: str) -> List[Dict]:
     '''
     This function takes a single argument as api_key
     and returns a list of dicts --> top 250 movies
 
     Args:
         api_key: str
-        
-    Returns: list(dict)
+
+    Returns: List(Dict)
     '''
 
     data = []
@@ -38,8 +39,7 @@ def get_top_250_movies(api_key: str):
 
     return data
 
-def get_top_250_series(api_key: str):
-
+def get_top_250_series(api_key: str) -> List[Dict]:
     '''
     This function takes a single argument as api_key
     and returns a list of dicts --> top 250 series
@@ -47,7 +47,7 @@ def get_top_250_series(api_key: str):
     Args:
         api_key: str
     
-    Returns: list(dict)
+    Returns: List(Dict)
     '''
 
     data = []
@@ -64,5 +64,29 @@ def get_top_250_series(api_key: str):
             'imDbRatingCount': series.get('imDbRatingCount'), 
         }
         data.append(series_info)
+    
+    return data
+
+def search_movie(api_key: str, expression: str) -> List[Dict]:
+    '''
+    This function get a single argument as an api-key
+    then returns the list of movies based on search keyword.
+
+    Args:
+        api_key: str
+
+    Returns: List[Dict]
+    '''
+
+    data = []
+    for movie in _get(SEARCH_MOVIE_URL, api_key, expression)['results']:
+        movie_info = {
+            'Id': movie.get('id'),
+            'ResultType': movie.get('resultType'),
+            'Image': movie.get('image'),
+            'Title': movie.get('title'),
+            'Description': movie.get('description'),
+        }
+        data.append(movie_info)
     
     return data
