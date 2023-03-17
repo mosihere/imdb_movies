@@ -46,6 +46,11 @@ use bloomRPC for sending request and getting response on port 50051
 <img loading="lazy" style="width:700px" src="./images/Top250Series.png">
 </div>
 
+### Searching movie by name
+<div align="center" >
+<img loading="lazy" style="width:700px" src="./images/SearchMovie.png">
+</div>
+
 ## New Features will add soon as a service
 
 ## Contributing
