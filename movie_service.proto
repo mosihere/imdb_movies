@@ -3,10 +3,16 @@ syntax = "proto3";
 service TopMovies{
     rpc GetTop250Movies(MovieRequest) returns (MovieArray) {}
     rpc GetTop250Series(SeriesRequest) returns (SerriesArray) {}
+    rpc SearchMovie(SearchMovieRequest) returns (SearchMovieArray) {}
 }
 
 message MovieRequest{
     string api_key = 1;
+}
+
+message SearchMovieRequest{
+    string api_key = 1;
+    string expression = 2;
 }
 
 message Movie{
@@ -43,4 +49,16 @@ message Series{
 
 message SerriesArray{
     repeated Series series = 1;
+}
+
+message SearchMovie{
+    string Id = 1;
+    string ResultType = 2;
+    string Image = 3;
+    string Title = 4;
+    string Description = 5;
+}
+
+message SearchMovieArray{
+    repeated SearchMovie searchMovie = 1;
 }

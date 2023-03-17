@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13movie_service.proto\"\x1f\n\x0cMovieRequest\x12\x0f\n\x07\x61pi_key\x18\x01 \x01(\t\"\x9b\x01\n\x05Movie\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04rank\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x11\n\tfullTitle\x18\x04 \x01(\t\x12\x0c\n\x04year\x18\x05 \x01(\t\x12\r\n\x05image\x18\x06 \x01(\t\x12\x0c\n\x04\x63rew\x18\x07 \x01(\t\x12\x12\n\nimDbRating\x18\x08 \x01(\t\x12\x17\n\x0fimDbRatingCount\x18\t \x01(\t\"$\n\nMovieArray\x12\x16\n\x06movies\x18\x01 \x03(\x0b\x32\x06.Movie\" \n\rSeriesRequest\x12\x0f\n\x07\x61pi_key\x18\x01 \x01(\t\"\x9c\x01\n\x06Series\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04rank\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x11\n\tfullTitle\x18\x04 \x01(\t\x12\x0c\n\x04year\x18\x05 \x01(\t\x12\r\n\x05image\x18\x06 \x01(\t\x12\x0c\n\x04\x63rew\x18\x07 \x01(\t\x12\x12\n\nimDbRating\x18\x08 \x01(\t\x12\x17\n\x0fimDbRatingCount\x18\t \x01(\t\"\'\n\x0cSerriesArray\x12\x17\n\x06series\x18\x01 \x03(\x0b\x32\x07.Series2p\n\tTopMovies\x12/\n\x0fGetTop250Movies\x12\r.MovieRequest\x1a\x0b.MovieArray\"\x00\x12\x32\n\x0fGetTop250Series\x12\x0e.SeriesRequest\x1a\r.SerriesArray\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13movie_service.proto\"\x1f\n\x0cMovieRequest\x12\x0f\n\x07\x61pi_key\x18\x01 \x01(\t\"9\n\x12SearchMovieRequest\x12\x0f\n\x07\x61pi_key\x18\x01 \x01(\t\x12\x12\n\nexpression\x18\x02 \x01(\t\"\x9b\x01\n\x05Movie\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04rank\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x11\n\tfullTitle\x18\x04 \x01(\t\x12\x0c\n\x04year\x18\x05 \x01(\t\x12\r\n\x05image\x18\x06 \x01(\t\x12\x0c\n\x04\x63rew\x18\x07 \x01(\t\x12\x12\n\nimDbRating\x18\x08 \x01(\t\x12\x17\n\x0fimDbRatingCount\x18\t \x01(\t\"$\n\nMovieArray\x12\x16\n\x06movies\x18\x01 \x03(\x0b\x32\x06.Movie\" \n\rSeriesRequest\x12\x0f\n\x07\x61pi_key\x18\x01 \x01(\t\"\x9c\x01\n\x06Series\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04rank\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x11\n\tfullTitle\x18\x04 \x01(\t\x12\x0c\n\x04year\x18\x05 \x01(\t\x12\r\n\x05image\x18\x06 \x01(\t\x12\x0c\n\x04\x63rew\x18\x07 \x01(\t\x12\x12\n\nimDbRating\x18\x08 \x01(\t\x12\x17\n\x0fimDbRatingCount\x18\t \x01(\t\"\'\n\x0cSerriesArray\x12\x17\n\x06series\x18\x01 \x03(\x0b\x32\x07.Series\"`\n\x0bSearchMovie\x12\n\n\x02Id\x18\x01 \x01(\t\x12\x12\n\nResultType\x18\x02 \x01(\t\x12\r\n\x05Image\x18\x03 \x01(\t\x12\r\n\x05Title\x18\x04 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x05 \x01(\t\"5\n\x10SearchMovieArray\x12!\n\x0bsearchMovie\x18\x01 \x03(\x0b\x32\x0c.SearchMovie2\xa9\x01\n\tTopMovies\x12/\n\x0fGetTop250Movies\x12\r.MovieRequest\x1a\x0b.MovieArray\"\x00\x12\x32\n\x0fGetTop250Series\x12\x0e.SeriesRequest\x1a\r.SerriesArray\"\x00\x12\x37\n\x0bSearchMovie\x12\x13.SearchMovieRequest\x1a\x11.SearchMovieArray\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'movie_service_pb2', globals())
@@ -22,16 +22,22 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   _MOVIEREQUEST._serialized_start=23
   _MOVIEREQUEST._serialized_end=54
-  _MOVIE._serialized_start=57
-  _MOVIE._serialized_end=212
-  _MOVIEARRAY._serialized_start=214
-  _MOVIEARRAY._serialized_end=250
-  _SERIESREQUEST._serialized_start=252
-  _SERIESREQUEST._serialized_end=284
-  _SERIES._serialized_start=287
-  _SERIES._serialized_end=443
-  _SERRIESARRAY._serialized_start=445
-  _SERRIESARRAY._serialized_end=484
-  _TOPMOVIES._serialized_start=486
-  _TOPMOVIES._serialized_end=598
+  _SEARCHMOVIEREQUEST._serialized_start=56
+  _SEARCHMOVIEREQUEST._serialized_end=113
+  _MOVIE._serialized_start=116
+  _MOVIE._serialized_end=271
+  _MOVIEARRAY._serialized_start=273
+  _MOVIEARRAY._serialized_end=309
+  _SERIESREQUEST._serialized_start=311
+  _SERIESREQUEST._serialized_end=343
+  _SERIES._serialized_start=346
+  _SERIES._serialized_end=502
+  _SERRIESARRAY._serialized_start=504
+  _SERRIESARRAY._serialized_end=543
+  _SEARCHMOVIE._serialized_start=545
+  _SEARCHMOVIE._serialized_end=641
+  _SEARCHMOVIEARRAY._serialized_start=643
+  _SEARCHMOVIEARRAY._serialized_end=696
+  _TOPMOVIES._serialized_start=699
+  _TOPMOVIES._serialized_end=868
 # @@protoc_insertion_point(module_scope)
