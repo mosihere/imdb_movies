@@ -1,5 +1,5 @@
 import grpc
-from api import get_top_250_movies, get_top_250_series
+from api import get_top_250_movies, get_top_250_series, search_movie
 import movie_service_pb2
 import movie_service_pb2_grpc
 from concurrent import futures
@@ -17,6 +17,14 @@ class MovieService(movie_service_pb2_grpc.TopMoviesServicer):
 
         series = get_top_250_series(api_key)
         return movie_service_pb2.SerriesArray(series=series)
+    
+    def SearchMovie(self, request, context):
+        api_key = request.api_key
+        expression = request.expression
+
+        results = search_movie(api_key, expression)
+        return movie_service_pb2.SearchMovieArray(searchMovie=results)
+
 
 
 def serve():
