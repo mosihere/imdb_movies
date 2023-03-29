@@ -47,6 +47,11 @@ use bloomRPC for sending request and getting response on port 50051
 $ python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. movie_service.proto
 ```
 
+## Run UnitTests:
+```
+$ python -m unittest test.py
+```
+
 ### Sample response in BloomRPC
 <div align="center" >
 <img loading="lazy" style="width:700px" src="./images/Top250Series.png">
