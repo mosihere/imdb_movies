@@ -1,5 +1,5 @@
 import unittest
-from api import get_top_250_movies, get_top_250_series, search_movie
+from api import get_top_250_movies, get_top_250_series, search_movie, search_series
 
 
 API_KEY = input('insert your api_key:\n')
@@ -27,4 +27,12 @@ class TestMovies(unittest.TestCase):
         '''
 
         result = search_movie(API_KEY, 'inception')
+        self.assertIsInstance(result, list)
+
+    def test_search_series(self):
+        '''
+        Check response type is list or not.
+        '''
+
+        result = search_series(API_KEY, 'lost')
         self.assertIsInstance(result, list)

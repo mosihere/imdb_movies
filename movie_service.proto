@@ -2,8 +2,9 @@ syntax = "proto3";
 
 service TopMovies{
     rpc GetTop250Movies(MovieRequest) returns (MovieArray) {}
-    rpc GetTop250Series(SeriesRequest) returns (SerriesArray) {}
+    rpc GetTop250Series(SeriesRequest) returns (SeriesArray) {}
     rpc SearchMovie(SearchMovieRequest) returns (SearchMovieArray) {}
+    rpc SearchSeries(SearchSeriesRequest) returns (SearchSeriesArray) {}
 }
 
 message MovieRequest{
@@ -11,6 +12,11 @@ message MovieRequest{
 }
 
 message SearchMovieRequest{
+    string api_key = 1;
+    string expression = 2;
+}
+
+message SearchSeriesRequest{
     string api_key = 1;
     string expression = 2;
 }
@@ -47,7 +53,7 @@ message Series{
     string imDbRatingCount = 9;
 }
 
-message SerriesArray{
+message SeriesArray{
     repeated Series series = 1;
 }
 
@@ -61,4 +67,16 @@ message SearchMovie{
 
 message SearchMovieArray{
     repeated SearchMovie searchMovie = 1;
+}
+
+message SearchSeries{
+    string Id = 1;
+    string ResultType = 2;
+    string Image = 3;
+    string Title = 4;
+    string Description = 5;
+}
+
+message SearchSeriesArray{
+    repeated SearchSeries series_array = 1;
 }
