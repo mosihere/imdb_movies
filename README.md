@@ -9,7 +9,8 @@ Whenever client send a request, server will process it and send JSON object as r
 **Responses could be:**
 1. Top 250 Movies of IMDB
 2. Top 250 Series of IMDB
-3. and ...
+3. Search Movies by Title
+4. Search Series by Title
 
 ## Clone Project
 

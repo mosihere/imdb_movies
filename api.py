@@ -5,6 +5,7 @@ from typing import List, Dict
 TOP_250_MOVIES_URL = "https://imdb-api.com/en/API/Top250Movies/"
 TOP_250_SERIES_URL = "https://imdb-api.com/en/API/Top250TVs/"
 SEARCH_MOVIE_URL = "https://imdb-api.com/en/API/SearchMovie/"
+SEARCH_SERIES_URL = "https://imdb-api.com/en/API/SearchSeries/"
 
 def _get(url, api_key, expression = ''):
     response = requests.get(f'{url}{api_key}/{expression}')
@@ -88,5 +89,29 @@ def search_movie(api_key: str, expression: str) -> List[Dict]:
             'Description': movie.get('description'),
         }
         data.append(movie_info)
+    
+    return data
+
+def search_series(api_key: str, expression: str) -> List[Dict]:
+    '''
+    This function get a single argument as an api-key
+    then returns the list of series based on search keyword.
+
+    Args:
+        api_key: str
+
+    Returns: List[Dict]
+    '''
+
+    data = []
+    for series in _get(SEARCH_SERIES_URL, api_key, expression)['results']:
+        series_info = {
+            'Id': series.get('id'),
+            'ResultType': series.get('resultType'),
+            'Image': series.get('image'),
+            'Title': series.get('title'),
+            'Description': series.get('description'),
+        }
+        data.append(series_info)
     
     return data
